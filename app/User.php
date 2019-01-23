@@ -27,4 +27,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function committee_members() {
+        return $this->belongsToMany('App\Committee', 'CommitteeMemberships')->withTimestamps();
+    }
+
+    public function committee_subscriptions() {
+        return $this->belongsToMany('App\Committee', 'CommitteeSubscriptions')->withTimestamps();
+    }
+
+
+
 }
